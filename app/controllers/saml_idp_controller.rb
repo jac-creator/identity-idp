@@ -88,8 +88,12 @@ class SamlIdpController < ApplicationController
   end
 
   def profile_or_identity_needs_verification_or_decryption?
-    return false unless ial2_requested?
+    return false unless ial2_requested? || ialmax_requested_with_ial2_user?
     profile_needs_verification? || identity_needs_verification? || identity_needs_decryption?
+  end
+
+  def ialmax_requested_with_ial2_user?
+    ial_context.ialmax_requested? && identity_needs_decryption?
   end
 
   def identity_needs_decryption?
@@ -129,7 +133,7 @@ class SamlIdpController < ApplicationController
   end
 
   def track_events
-    analytics.track_event(Analytics::SP_REDIRECT_INITIATED, ial: sp_session_ial)
+    analytics.track_event(Analytics::SP_REDIRECT_INITIATED, ial: ial_context.ial)
     track_billing_events
   end
 end
