@@ -8,12 +8,32 @@ Unreleased
 - Layout: The "Delete Account" confirmation page has a new layout consistent with other content pages. (#5857)
 
 ### Accessibility
+- Identity Verification: The Send a Letter "Come back soon" screen has improved grammar and content structure semantics. (#5868)
+- Document capture: The image file field label is no longer set to file names so that screen readers do not read the filenames to users. (#5858)
 
 ### Bug Fixes Users Might Notice
 
 ### Behind the Scenes Changes Users Probably Won't Notice
 - Maintenance: Add CI check to include changelog message in change requests (#5836)
 - Dependencies: Upgrade the Login.gov Design System to the latest version (#5860)
+- Alerting: Manage alerts for duplicate scheduled jobs (#5871)
+- Identity Verification: Add more phone number validation to phone confirmation (#5873)
+- Dependencies: Update various dependencies (#5877)
+
+RC 175.2 - 2022-01-29
+----------------------
+
+### Improvements/Changes
+- Authentication: Add the ability to ban users (#5875)
+
+### Behind the Scenes Changes Users Probably Won't Notice
+- Identity Verification: Add more phone number validation to phone confirmation (#5873)
+
+RC 175.1 - 2022-01-27
+----------------------
+
+### Bug Fixes Users Might Notice
+- Bug Fix: Fix a bug on the account screen that caused proofed users who reset their password to see a 500 error. (#5864)
 
 RC 175 - 2022-01-27
 ----------------------
