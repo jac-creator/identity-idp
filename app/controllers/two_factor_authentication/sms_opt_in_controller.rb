@@ -46,7 +46,7 @@ module TwoFactorAuthentication
     private
 
     def opt_out_manager
-      @opt_out_manager ||= Telephony::Pinpoint::OptOutManager.new
+      Telephony::Pinpoint::OptOutManager.new
     end
 
     def mfa_context
@@ -54,10 +54,10 @@ module TwoFactorAuthentication
     end
 
     def load_phone_configuration
-      if user_session.present? && (phone_id = user_session[:phone_id]).present?
-        @phone_configuration = mfa_context.phone_configuration(phone_id)
-      elsif user_session.present? && (unconfirmed_phone = user_session[:unconfirmed_phone]).present?
+      if user_session.present? && (unconfirmed_phone = user_session[:unconfirmed_phone]).present?
         @phone_configuration = PhoneConfiguration.new(phone: unconfirmed_phone)
+      elsif user_session.present? && (phone_id = user_session[:phone_id]).present?
+        @phone_configuration = mfa_context.phone_configuration(phone_id)
       else
         render_not_found
       end
@@ -66,7 +66,7 @@ module TwoFactorAuthentication
     def other_options_mfa_url
       if new_user?
         two_factor_options_path
-      elsif has_other_auth_methods?
+      elsif has_other_auth_methods? && !user_fully_authenticated?
         login_two_factor_options_path
       end
     end
