@@ -6,6 +6,19 @@ Unreleased
 
 ### Improvements/Changes
 - Layout: Improve layout margins and typographical consistency across several content pages. (#5880, #5884, #5887, #5888, #5906, #5908)
+- Typography: Updated font to Public Sans for consistency across login.gov sites. (#5900)
+
+### Accessibility
+
+### Bug Fixes Users Might Notice
+
+### Behind the Scenes Changes Users Probably Won't Notice
+
+RC 176 - 2022-02-03
+----------------------
+
+### Improvements/Changes
+- Layout: Improve layout margins and typographical consistency across several content pages. (#5857, #5869, #5884, #5885)
 - Typography: Updated monospace font to Roboto Mono for consistency across login.gov sites. (#5891)
 - Icons: Replaced custom button icons using U.S. Web Design system icons. (#5904)
 - User Interface: Updated styling for process lists following U.S. Web Design System best practices. (#5863)
