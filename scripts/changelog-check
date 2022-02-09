@@ -2,7 +2,10 @@
 require 'open3'
 require 'optparse'
 
-CHANGELOG_REGEX = %r{^changelog: (?<category>[\w -]{2,}): (?<change>.+)$}
+CHANGELOG_REGEX = %r{^changelog: (?<category>[\w -\/]{2,}), (?<subcategory>[A-Z][\w -]{2,}), (?<change>.+)$}
+CATEGORIES = [
+  "Improvements", "Accessibility", "Bug Fixes", "Behind the Scenes Changes",
+]
 # A valid entry has a line in a commit message in the form of:
 # changelog: CATEGORY: CHANGE_DESCRIPTION
 def is_valid_changelog?(line)
