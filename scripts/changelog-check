@@ -6,7 +6,6 @@ CHANGELOG_REGEX =
   %r{^changelog: (?<category>[\w -/]{2,}), (?<subcategory>[A-Z][\w -]{2,}), (?<change>.+)$}
 CATEGORIES = [
   'Improvements', 'Accessibility', 'Bug Fixes', 'Behind the Scenes Changes'
-
 ]
 SKIP_CHANGELOG_MESSAGE = '[skip changelog]'
 
@@ -166,13 +165,14 @@ def main(args)
   )
 
   if skip_check || changelog_entries.count > 0
-    puts format_changelog(changelog_entries)
+    formatted_changelog = format_changelog(changelog_entries)
+    puts format_changelog(changelog_entries) if formatted_changelog.length > 0
     exit 0
   else
     warn(
       <<~ERROR,
         A valid changelog line was not found.
-        A commit message should be contain a line in the form of:
+        A commit message should contain a line in the form of:
 
         changelog: CATEGORY, SUBCATEGORY, CHANGE_DESCRIPTION
 
